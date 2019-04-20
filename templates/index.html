@@ -17,18 +17,29 @@
 <body>
     <nav>
         <div class="container">
-            <a href="/">Home</a>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/widget">Create Widget</a></li>
+                {% if user_logged_in %}
+                <li><a href="/logout">Log Out</a></li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
     <div class="container">
         <div class="timeout">
             {% if message %}
-            <h3>{{ message }}</h3>
+            <span class="toast">
+                <p>{{ message }}</p>
+            </span>
             {% endif %}
         </div>
         {% if user_logged_in %}
         <div class="timeout">
             <h3>You are logged in!</h3>
+            {% for widget in widgets %}
+            <h4>{{ widget.description }}</h4>
+            {% endfor %}
         </div>
         {% else %}
         <form action="/login">
