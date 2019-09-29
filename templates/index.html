@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Logmein!</title>
     <link rel="stylesheet" href="static/css/materialize.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <style>
         form {
             margin-top: 40px;
@@ -26,14 +27,14 @@
             </ul>
         </div>
     </nav>
+    <div class="timeout">
+        {% if message %}
+        <span class="toast">
+            <p>{{ message }}</p>
+        </span>
+        {% endif %}
+    </div>
     <div class="container">
-        <div class="timeout">
-            {% if message %}
-            <span class="toast">
-                <p>{{ message }}</p>
-            </span>
-            {% endif %}
-        </div>
         {% if user_logged_in %}
         <div class="timeout">
             <h3>You are logged in!</h3>

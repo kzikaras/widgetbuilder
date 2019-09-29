@@ -92,7 +92,11 @@ def signup():
 
 @app.route('/widget')
 def widgetform():
-    return render_template('widget_form.html')
+    if 'user_email' in session.keys():
+        print(session.keys())
+        return render_template('widget_form.html')
+    else:
+        return render_template('index.html', message='You are not allowed to access that')
 
 
 @app.route('/create_widget')
